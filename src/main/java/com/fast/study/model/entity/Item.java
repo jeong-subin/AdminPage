@@ -30,6 +30,7 @@ public class Item {
     private String createdBy;
     private LocalDateTime updatedAt;
     private String updatedBy;
+    private Long partnerId;
 
     //1:n
     //Lazy = 지연로딩(1:n), EAGER = 즉시로딩(1:1)에 추천
