@@ -6,6 +6,7 @@ ERD 생성
 mySql 테이블생성  
 entity 생성  
 Repository 생성  
+Repository db 연동 Test 완료  
 
 
 ## 21.02.03  
