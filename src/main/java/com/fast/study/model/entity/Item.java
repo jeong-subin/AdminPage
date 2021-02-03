@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor //존재하는 모든생성자를 자동으로 생성
 @NoArgsConstructor //파라매터가없는 생성자 생성
 @Entity  //jpa를 사용해서 테이블과 매핑할 클래스는  @Entity어노태이션을 필수로 분여야 합니다.
-
+@ToString(exclude = {"orderDetailList","partner"})
 public class Item {
     @Id //db 테이블에 PK를 명시하는 것
     @GeneratedValue(strategy = GenerationType.IDENTITY)// 주키의 값을 위한 자동 생성 전략명시
@@ -30,7 +30,15 @@ public class Item {
     private String createdBy;
     private LocalDateTime updatedAt;
     private String updatedBy;
-    private Long partnerId;
+
+
+    //Item 1 : N OrderDetail
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "item")
+    private List<OrderDetail> orderDetailList;
+
+    //Item N:1 Partner
+    @ManyToOne
+    private Partner partner;
 
     //1:n
     //Lazy = 지연로딩(1:n), EAGER = 즉시로딩(1:1)에 추천
