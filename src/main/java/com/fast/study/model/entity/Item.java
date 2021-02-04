@@ -1,19 +1,26 @@
 package com.fast.study.model.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
+import lombok.experimental.Accessors;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
+@Builder
+@Accessors(chain = true)
+
 
 @Data
 @AllArgsConstructor //존재하는 모든생성자를 자동으로 생성
 @NoArgsConstructor //파라매터가없는 생성자 생성
 @Entity  //jpa를 사용해서 테이블과 매핑할 클래스는  @Entity어노태이션을 필수로 분여야 합니다.
 @ToString(exclude = {"orderDetailList","partner"})
+@EntityListeners(AuditingEntityListener.class)
 public class Item {
     @Id //db 테이블에 PK를 명시하는 것
     @GeneratedValue(strategy = GenerationType.IDENTITY)// 주키의 값을 위한 자동 생성 전략명시
@@ -26,10 +33,18 @@ public class Item {
     private String brandName;
     private LocalDateTime registeredAt;
     private LocalDateTime unregisteredAt;
+    @CreatedDate
     private LocalDateTime createdAt;
+
+    @CreatedBy
     private String createdBy;
+
+    @LastModifiedDate
     private LocalDateTime updatedAt;
+
+    @LastModifiedBy
     private String updatedBy;
+
 
 
     //Item 1 : N OrderDetail

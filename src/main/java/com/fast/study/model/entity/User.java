@@ -1,9 +1,12 @@
 package com.fast.study.model.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
+import lombok.experimental.Accessors;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -14,6 +17,9 @@ import java.util.List;
 @NoArgsConstructor
 @ToString(exclude = {"orderGroup"})
 @Entity//==table
+@EntityListeners(AuditingEntityListener.class)
+@Builder
+@Accessors(chain = true)
 
 //java는 camelCase db snake_case
 //etity 이름 table 이름이랑 같게
@@ -30,12 +36,20 @@ public class User {
     private String phoneNumber;
     private LocalDateTime registeredAt;
     private LocalDateTime unregisteredAt;
-    private LocalDateTime createdAt;
-    private String createdBy;
-    private LocalDateTime updatedAt;
-    private  String updatedBy;
+ @CreatedDate
+ private LocalDateTime createdAt;
 
-    //User 1 : N OrderGroup
+ @CreatedBy
+ private String createdBy;
+
+ @LastModifiedDate
+ private LocalDateTime updatedAt;
+
+ @LastModifiedBy
+ private String updatedBy;
+
+
+ //User 1 : N OrderGroup
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private List<OrderGroup> orderGroupList;
 

@@ -25,11 +25,11 @@ public class UserRepositoryTest extends StudyApplicationTests{
     @Test
     //따로 쿼리문을 작성하지 않아도 db insert 할수 있음
     public void create(){
-        String account = "Test01";
-        String  password = "Test01";
+        String account = "Test03";
+        String  password = "Test03";
         String  status = "REGISTERED";
         String email = "Test01gmail.com";
-        String phoneNumber = "010-1111-2222";
+        String phoneNumber = "010-1111-3333";
         LocalDateTime registeredAt = LocalDateTime.now();
         LocalDateTime createdAt = LocalDateTime.now();
         String createdBy = "AdminServer";
@@ -41,8 +41,10 @@ public class UserRepositoryTest extends StudyApplicationTests{
         user.setEmail(email);
         user.setPhoneNumber(phoneNumber);
         user.setRegisteredAt(registeredAt);
-        user.setCreatedAt(createdAt);
-        user.setCreatedBy(createdBy);
+
+        User u = User.builder().account(account).password(password).status(status).email(email).build();
+
+
 
         User newUser = userRepository.save(user);
         Assertions.assertNotNull(newUser);
@@ -52,6 +54,12 @@ public class UserRepositoryTest extends StudyApplicationTests{
     public void read(){
 
         User user = userRepository.findFirstByPhoneNumberOrderByIdDesc("010-1111-2222");
+
+        //chain
+        user.setEmail("").setPhoneNumber("").setStatus("");
+
+
+
 
         user.getOrderGroupList().stream().forEach(orderGroup -> {
 
