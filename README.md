@@ -12,3 +12,7 @@ Repository db 연동 Test 완료
 ## 21.02.03  
 연관관계설정  
 사용자 CRUD 만들기  
+
+## 21.02.07  
+상품 CRUD만들기
+주문내역 CRUD 
