@@ -1,6 +1,7 @@
 package com.fast.study.controller;
 
 import com.fast.study.model.SearchParam;
+import com.fast.study.model.network.Header;
 import org.springframework.web.bind.annotation.*;
 
 @RestController // 이곳을 컨트롤러로 사용할 거라고 알려줌
@@ -34,12 +35,17 @@ public class GetController {
     //객체를 통한 검색파라미터 받기
     //객체를 리턴한다는 이야기는 json 형태로 바꿔달라는 이야기다
 
-//    @GetMapping("/getMultiParameter")
-//    public SearchParam getMultiParameter(SearchParam searchParam){
-//        System.out.println(searchParam.getAccount());
-//        System.out.println(searchParam.getEmail());
-//        System.out.println(searchParam.getPage());
-//    //{"account" : "", "email" : "", "page" : 0}
-//        return searchParam;
-//    }
+    @GetMapping("/getMultiParameter")
+    public SearchParam getMultiParameter(SearchParam searchParam){
+        System.out.println(searchParam.getAccount());
+        System.out.println(searchParam.getEmail());
+        System.out.println(searchParam.getPage());
+//    {"account" : "", "email" : "", "page" : 0}
+      return searchParam;
+   }
+    @GetMapping("/header")
+    public Header getHeader(){
+        //{"resultCode:"Ok", "description" : "Ok"}
+        return Header.builder().resultCode("OK").description("OK").build();
+   }
 }
