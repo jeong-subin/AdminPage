@@ -4,6 +4,7 @@ package com.fast.study.repository;
 import com.fast.study.StudyApplicationTests;
 import com.fast.study.model.entity.Item;
 import com.fast.study.model.entity.User;
+import com.fast.study.model.enumclass.UserStatus;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -27,7 +28,7 @@ public class UserRepositoryTest extends StudyApplicationTests{
     public void create(){
         String account = "Test03";
         String  password = "Test03";
-        String  status = "REGISTERED";
+        UserStatus status = UserStatus.REGISTERED;
         String email = "Test01gmail.com";
         String phoneNumber = "010-1111-3333";
         LocalDateTime registeredAt = LocalDateTime.now();
@@ -54,9 +55,9 @@ public class UserRepositoryTest extends StudyApplicationTests{
     public void read(){
 
         User user = userRepository.findFirstByPhoneNumberOrderByIdDesc("010-1111-2222");
-
+        Assertions.assertNotNull(user);
         //chain
-        user.setEmail("").setPhoneNumber("").setStatus("");
+       // user.setEmail("").setPhoneNumber("").setStatus("");
 
 
 
