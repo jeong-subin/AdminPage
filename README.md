@@ -15,4 +15,11 @@ Repository db 연동 Test 완료
 
 ## 21.02.07  
 상품 CRUD만들기  
-주문내역 CRUD 
+주문내역 CRUD 만들기
+  
+
+## 21.02.08  
+enum 형태의 값관리  
+User - status //REGISTERED / UNREGISTERED / WAITING  
+item - status  // 등록/해지/검수중(등록대기중)  
+OrderGroup - orderType  //주문형태 일괄/개별  
