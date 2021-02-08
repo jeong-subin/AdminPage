@@ -1,5 +1,6 @@
 package com.fast.study.model.entity;
 
+import com.fast.study.model.enumclass.ItemStatus;
 import lombok.*;
 import lombok.experimental.Accessors;
 import org.springframework.data.annotation.CreatedBy;
@@ -30,7 +31,9 @@ public class Item {
     @Id //db 테이블에 PK를 명시하는 것
     @GeneratedValue(strategy = GenerationType.IDENTITY)// 주키의 값을 위한 자동 생성 전략명시
     private Long id;
-    private String status;
+
+    @Enumerated(EnumType.STRING)
+    private ItemStatus status; // 등록/해지/검수중(등록대기중)
     private String name;
     private String title;
     private String content;
