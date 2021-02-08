@@ -24,7 +24,11 @@
   item - status  // 등록/해지/검수중(등록대기중)  
   OrderGroup - orderType  //주문형태 일괄/개별  
 2.controller 추상화 적용  
-  ItemApiController  
-  OrderGroupApiController  
+ 원래는 CrudInterface를 implements 해서 사용했으나    
+ @PostMapping .. 등등 중복되는 코드를 없애기 위해  
+  CrudController 추상클래스 생성 후 
+  ItemApiController 상속  
+  OrderGroupApiController  상속 
+  받아서 중복되는 부분을 없앰
  
 
