@@ -29,6 +29,7 @@
   CrudController 추상클래스 생성 후 
   ItemApiController 상속  
   OrderGroupApiController  상속 
-  받아서 중복되는 부분을 없앰
+  받아서 중복되는 부분을 없앰  
+3.PartnerApiLogicService 추가
  
 
