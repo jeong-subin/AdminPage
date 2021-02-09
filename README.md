@@ -33,3 +33,7 @@
 3.PartnerApiLogicService 추가
  
 
+## 21.02.09 
+user페이징 기능 추가
+user 상세검색
+view랑 연결
